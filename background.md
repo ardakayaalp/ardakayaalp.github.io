@@ -28,7 +28,7 @@ Jul. 2022 – May 2023, Ankara, Turkey
 - Research and algorithm development on medical data and image processing systems.
 - Development of MATLAB-based prototype of a DICOM-RT viewer application with GUI.
 - Research and algorithm development on a low-cost, fast, and accurate optical surface tracking system for SGRT applications.
-- Development of a low-cost prototype application of a SGRT system in C++ using OpenCV and CUDA toolkits.
+- Development of a low-cost prototype application of an SGRT system in C++ using OpenCV and CUDA toolkits.
 
 ---
 
@@ -63,7 +63,7 @@ Jun. – Jul. 2018, Istanbul, Turkey
 
 **OMV Samsun Thermal Power Plant**  
 Jul. – Aug. 2017, Samsun, Turkey  
-- Studied thermodynamical aspects of a power plant.
+- Studied thermodynamic aspects of a power plant.
 
 ---
 
@@ -71,7 +71,7 @@ Jul. – Aug. 2017, Samsun, Turkey
 
 - Multinucleon transfer mechanisms
 - Computational radiation transport
-- Experimental nuclear physics
+- Experimental particle physics
 
 ---
 
