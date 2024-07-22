@@ -20,6 +20,20 @@ Aug. 2015 – Jun. 2019, Ankara, Turkey
 
 ---
 
+## Internships
+
+**Çekmece Nuclear Research and Education Center**  
+Jun. – Jul. 2018, Istanbul, Turkey  
+- Studied reactor physics, radiation protection, and radioactive waste management.
+
+---
+
+**OMV Samsun Thermal Power Plant**  
+Jul. – Aug. 2017, Samsun, Turkey  
+- Studied thermodynamic aspects of a power plant.
+
+---
+
 ## Research Experience
 
 **R&D Engineer**  
@@ -50,20 +64,6 @@ Dec. 2018 – Jan. 2020, Ankara, Turkey
 - Development of an image processing software with MATLAB that calculates the approximate area and centroid of the proton beam image on the beam screen at METU-DBL.
 - Design and implementation of irradiation tests on METU-DBL.
 - Basic proton beamline calculations with TURTLE Program.
-
----
-
-## Internships
-
-**Çekmece Nuclear Research and Education Center**  
-Jun. – Jul. 2018, Istanbul, Turkey  
-- Studied reactor physics, radiation protection, and radioactive waste management.
-
----
-
-**OMV Samsun Thermal Power Plant**  
-Jul. – Aug. 2017, Samsun, Turkey  
-- Studied thermodynamic aspects of a power plant.
 
 ---
 
