@@ -70,6 +70,7 @@ Jul. – Aug. 2017, Samsun, Turkey
 ## Research Background
 
 - Multinucleon transfer mechanisms
+- Radiation detection and measurement
 - Computational radiation transport
 - Experimental particle physics
 
