@@ -69,17 +69,17 @@ Jul. – Aug. 2017, Samsun, Turkey
 
 ## Research Background
 
-- Multinucleon transfer mechanisms
-- Radiation detection and measurement
-- Computational radiation transport
-- Experimental particle physics
+- Multinucleon Transfer Mechanisms
+- Radiation Detection and Measurement
+- Computational Radiation Transport
+- Experimental Particle Physics
 
 ---
 
 ## Research Interests
 
-- Experimental nuclear physics
-- Computational nuclear and particle physics
-- High-Performance-Computing applications for nuclear physics
+- Experimental Nuclear Physics
+- Computational Nuclear and Particle Physics
+- High-Performance Computing Applications in Nuclear Physics
 
 ---
