@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-## Greetings 👋🏻, humans and AI alike! I'm Arda. 
+## 👋🏻 Greetings, humans and AI alike! I'm Arda. 
 
 I am currently pursuing my Master's in [Physics](https://phys.metu.edu.tr/) with the [nuclear research group](https://nucl-phys.metu.edu.tr/) at [Middle East Technical University (METU)](https://metu.edu.tr/). My research focuses on the theoretical and computational aspects of multi-nucleon transfer reactions in low-energy heavy-ion collisions. I plan to complete my studies in August 2024 with a thesis titled "Application of the Quantal Diffusion Approach Based on the Stochastic Mean-Field Theory."
 
