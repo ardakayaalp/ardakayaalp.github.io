@@ -8,7 +8,7 @@ collection: background
 
 **Middle East Technical University**  
 M.Sc. Student at Department of Physics (3.36/4.00 CGPA)  
-Mar. 2021 – Present, Ankara, Turkey  
+Mar. 2021 – Aug. 2024, Ankara, Turkey  
 **Thesis Title:** Application of the Quantal Diffusion Approach Based on the Stochastic Mean-Field Theory
 
 ---
