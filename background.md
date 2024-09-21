@@ -72,8 +72,7 @@ Dec. 2018 – Jan. 2020, Ankara, Turkey
 - Multinucleon Transfer Mechanisms
 - Radiation Detection and Measurement
 - Computational Radiation Transport
-- Experimental Particle Physics
-
+  
 ---
 
 ## Research Interests
