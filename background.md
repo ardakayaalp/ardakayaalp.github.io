@@ -79,7 +79,6 @@ Dec. 2018 – Jan. 2020, Ankara, Turkey
 ## Research Interests
 
 - Experimental Nuclear Physics
-- Computational Nuclear and Particle Physics
 - High-Performance Computing Applications in Nuclear Physics
 
 ---
