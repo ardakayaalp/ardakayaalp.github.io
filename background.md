@@ -6,15 +6,21 @@ collection: background
 
 ## Education
 
+**Katholieke Universiteit Leuven**
+Ph.D. Student in Physics, Arenberg Doctoral School
+Oct. 2024 - Present, Leuven, Belgium
+
+---
+
 **Middle East Technical University**  
-M.Sc. Student at Department of Physics (3.36/4.00 CGPA)  
+M.Sc. in Nuclear Physics  
 Mar. 2021 – Aug. 2024, Ankara, Turkey  
 **Thesis Title:** Application of the Quantal Diffusion Approach Based on the Stochastic Mean-Field Theory
 
 ---
 
 **Hacettepe University**  
-B.Sc. in Nuclear Engineering (Honours, 3.22/4.00 CGPA)  
+B.Sc. in Nuclear Engineering (Honours)  
 Aug. 2015 – Jun. 2019, Ankara, Turkey  
 **Graduation Project:** A Study of p-B11 Fusion Reaction using Geant4 Toolkit
 
