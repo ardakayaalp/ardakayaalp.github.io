@@ -3,6 +3,8 @@ title: "Education & Research Background"
 excerpt: "Background"
 collection: background
 
+---
+
 ## Education
 
 **Katholieke Universiteit Leuven**  
