@@ -4,7 +4,6 @@ excerpt: "Background"
 collection: background
 
 ## Education
----
 
 **Katholieke Universiteit Leuven**  
 Ph.D. in Physics, Arenberg Doctoral School  
@@ -28,7 +27,6 @@ Aug. 2015 – Jun. 2019, Ankara, Turkey
 ---
 
 ## Internships
----
 
 **Çekmece Nuclear Research and Education Center**  
 Jun. – Jul. 2018, Istanbul, Turkey  
@@ -43,7 +41,6 @@ Jul. – Aug. 2017, Samsun, Turkey
 ---
 
 ## Research & Employment Experience
----
 
 **Doctoral Researcher**  
 Nuclear Moments Group, KU Leuven  
@@ -82,7 +79,6 @@ Dec. 2018 – Jan. 2020, Ankara, Turkey
 
 ## Research Background
 
-
 - Multinucleon Transfer Mechanisms  
 - Radiation Detection and Measurement  
 - Computational Radiation Transport
@@ -90,7 +86,6 @@ Dec. 2018 – Jan. 2020, Ankara, Turkey
 ---
 
 ## Research Interests
-
 
 - Experimental Nuclear Physics  
 - High-Performance Computing Applications in Nuclear Physics
