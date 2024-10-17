@@ -5,6 +5,7 @@ collection: background
 ---
 
 ## Education
+---
 
 **Katholieke Universiteit Leuven**
 Ph.D. Student in Physics, Arenberg Doctoral School
