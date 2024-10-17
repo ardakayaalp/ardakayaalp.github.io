@@ -81,7 +81,7 @@ Dec. 2018 – Jan. 2020, Ankara, Turkey
 ---
 
 ## Research Background
----
+
 
 - Multinucleon Transfer Mechanisms  
 - Radiation Detection and Measurement  
@@ -90,7 +90,7 @@ Dec. 2018 – Jan. 2020, Ankara, Turkey
 ---
 
 ## Research Interests
----
+
 
 - Experimental Nuclear Physics  
 - High-Performance Computing Applications in Nuclear Physics
