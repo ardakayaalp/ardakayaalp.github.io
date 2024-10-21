@@ -34,8 +34,6 @@ Aug. 2015 – Jun. 2019, Ankara, Turkey
 Jun. – Jul. 2018, Istanbul, Turkey  
 - Studied reactor physics, radiation protection, and radioactive waste management.
 
----
-
 **OMV Samsun Thermal Power Plant**  
 Jul. – Aug. 2017, Samsun, Turkey  
 - Studied thermodynamic aspects of a power plant.
