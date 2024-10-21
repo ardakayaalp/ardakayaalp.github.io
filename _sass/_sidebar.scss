@@ -52,12 +52,12 @@
   }
 
   img {
-    width: 100%;
+    width: 95%;
   }
 }
 
 .sidebar__right {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 
   @include breakpoint($large) {
     position: relative;
