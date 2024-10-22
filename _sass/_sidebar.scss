@@ -267,7 +267,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -20px;  /* Moves the image up */
-  margin-left: 15px;  /* Moves the image to the right */
+  transform: translate(10px, -10px);  /* Moves right by 10px, up by 10px */
   width: 100%;
 }
