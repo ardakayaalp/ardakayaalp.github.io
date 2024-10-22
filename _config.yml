@@ -17,7 +17,7 @@ locale                   : "en-US"
 title                    : "Arda's Homepage"
 title_separator          : "-"
 name                     : &name "/ Arda Kayaalp"
-description              : &description "Nuclear Physicist"
+description              : &description "Doctoral Researcher in Physics"
 url                      : https://ardakayaalp.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ardakayaalp/ardakayaalp.github.io"
@@ -30,7 +30,7 @@ author:
   avatar           : "profile.jpg"
   name             : "Arda Kayaalp"
   pronouns         : # example: "she/her"  
-  bio              : Nuclear Physicist
+  bio              : Doctoral Researcher in Physics
   location         : "Leuven"
   employer         : "KU Leuven"
   uri              : # URL
