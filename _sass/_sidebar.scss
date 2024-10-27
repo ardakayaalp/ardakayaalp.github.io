@@ -272,37 +272,39 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0;
-    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 0 !important;
+    width: 100% !important;
   }
 
   .author__avatar {
-    margin: 0;
-    transform: none;
+    margin: 0 !important;
+    transform: none !important;
   }
 
   .author__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin-top: 10px !important; /* Add spacing if necessary */
   }
 
   .author__urls-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
   }
 
-  .btn {  /* This targets the "Follow" button */
-    display: flex;
-    justify-content: center;
-    margin: 10px auto;  /* Center the button and add a bit of spacing */
+  .btn {  /* Targeting the "Follow" button */
+    display: flex !important;
+    justify-content: center !important;
+    margin: 10px auto !important; /* Center and add spacing */
   }
 }
+
 
