@@ -281,28 +281,33 @@
   }
 
   .author__avatar {
-    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
     transform: none !important;
   }
 
-  .author__content {
+  .author__content,
+  .author__urls-wrapper {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    justify-content: center !important;
     text-align: center !important;
-    width: 100% !important;
-    margin-top: 10px !important; /* Add spacing if necessary */
+    width: auto !important;
+    margin: 0 auto !important;
   }
 
-  .author__urls-wrapper {
-    display: flex !important;
-    justify-content: center !important;
+  .author__content h3,
+  .author__content p {
+    text-align: center !important;
     width: 100% !important;
   }
 
   .btn {  /* Targeting the "Follow" button */
-    display: flex !important;
-    justify-content: center !important;
+    display: block !important;
+    text-align: center !important;
     margin: 10px auto !important; /* Center and add spacing */
   }
 }
