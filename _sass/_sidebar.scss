@@ -269,3 +269,17 @@
   align-items: center;
   width: 100%;
 }
+
+@media (max-width: 768px) {  // Adjust the width threshold as needed
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .author__avatar {
+    margin: 0;  // Remove any offset margins
+    transform: none;  // Reset the transform for centering
+  }
+}
