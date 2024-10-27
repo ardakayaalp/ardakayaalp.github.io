@@ -270,27 +270,39 @@
   width: 100%;
 }
 
-@media (max-width: 768px) {  // Adjust the width threshold as needed
+@media (max-width: 768px) {
   .sidebar {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 0;              // Removes any extra padding
-    width: 100%;             // Ensures the sidebar takes full width of the screen
+    padding: 0;
+    width: 100%;
   }
 
   .author__avatar {
-    margin: 0;               // Remove any offset margins
-    transform: none;         // Reset the transform for centering
+    margin: 0;
+    transform: none;
   }
 
-  .author__content,
-  .author__urls-wrapper {
-    text-align: center;
-    width: 100%;             // Centers and stretches content
+  .author__content {
     display: flex;
-    justify-content: center;  // Centers content horizontally
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .author__urls-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .btn {  /* This targets the "Follow" button */
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;  /* Center the button and add a bit of spacing */
   }
 }
 
