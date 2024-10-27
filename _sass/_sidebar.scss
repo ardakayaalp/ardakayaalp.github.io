@@ -270,46 +270,6 @@
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding: 0 !important;
-    width: 100% !important;
-  }
 
-  .author__avatar {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin: 0 auto !important;
-    transform: none !important;
-  }
-
-  .author__content,
-  .author__urls-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    width: auto !important;
-    margin: 0 auto !important;
-  }
-
-  .author__content h3,
-  .author__content p {
-    text-align: center !important;
-    width: 100% !important;
-  }
-
-  .btn {  /* Targeting the "Follow" button */
-    display: block !important;
-    text-align: center !important;
-    margin: 10px auto !important; /* Center and add spacing */
-  }
-}
 
 
