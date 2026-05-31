@@ -18,7 +18,7 @@ title                    : "Arda's Homepage"
 title_separator          : "-"
 name                     : &name "/            Arda Kayaalp"
 description              : &description "Doctoral Researcher in Physics"
-url                      : https://ardakayaalp.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://ardakayaalp.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "ardakayaalp/ardakayaalp.github.io"
 
