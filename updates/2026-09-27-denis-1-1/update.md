@@ -6,7 +6,7 @@ description: "A new version of DENIS, my desktop toolkit for analysing collinear
 
 A new version of **[DENIS](https://github.com/ardakayaalp/DENIS)** is out. DENIS (*Doppler Estimation and Numerical Inference for Spectroscopy*) is the desktop toolkit I develop for collinear laser spectroscopy (CLS). It covers the whole chain in one place: beam-time estimation, pre-analysis of the raw runs (@fig:preanalysis), hyperfine fitting with satlas2, isotope shifts and a browser for the results.
 
-![Pre-analysis of two runs: the time-of-flight gate (top), the spectrum with a hyperfine model overlaid (middle) and the counts over time (bottom).](figures/pre-analysis.png){#fig:preanalysis}
+![Pre-analysis of two ⁷³Ge runs: the time-of-flight gate (top), the spectrum with a hyperfine model overlaid (middle) and the counts over time (bottom).](figures/pre-analysis.png){#fig:preanalysis}
 
 ## New in 1.1 {#sec:new}
 
@@ -20,6 +20,16 @@ Sessions saved with 1.0 open unchanged. Fits are built from blocks (@fig:pipelin
 ![The block-based fitting pipeline: source, model, fitter and output.](figures/fitting-pipeline.png){#fig:pipeline}
 
 ![Gaussian-process correction of the reference centroid drift, with 1σ and 2σ bands.](figures/gp-correction.png){#fig:gp}
+
+## Mini DENIS in the browser {#sec:mini}
+
+To try it without installing anything, open **[Mini DENIS](/mini-denis/){:target="_blank" rel="noopener"}**. It runs the Estimate and Pre-Analysis tabs right in your browser, using the same DENIS Python code, and your files never leave your computer.
+
+- **Estimate:** plan a beam time with the desktop estimator: spectra, peak list and measuring times, with the plots and results to download.
+- **Pre-Analysis:** open ASDF runs, set time-of-flight and time gates, overlay hyperfine models, check the voltage calibrations and the cooler stability, and save the plots.
+- **Sessions:** session files move freely between Mini DENIS and the desktop app, in both directions.
+
+It works on phones and tablets too. Fitting, isotope shifts and the results browser stay in the full desktop version (@sec:get).
 
 ## Get it {#sec:get}
 
