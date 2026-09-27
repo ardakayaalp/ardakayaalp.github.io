@@ -69,6 +69,7 @@ exclude:
   - vendor
   - node_modules
   - "*.py"
+  - mini-denis/py          # Mini DENIS Python sources (they ship inside mini-denis/denis-py.zip)
 
 # ---------------------------------------------------------------------------
 # Build (all of these are supported by GitHub Pages)

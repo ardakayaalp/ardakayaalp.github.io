@@ -29,8 +29,8 @@
       {%- for item in site.data.navigation %}
       {%- if item.url == '/' -%}{%- assign is_here = false -%}{%- if page.url == '/' -%}{%- assign is_here = true -%}{%- endif -%}
       {%- else -%}{%- assign is_here = false -%}{%- if page.url contains item.url -%}{%- assign is_here = true -%}{%- endif -%}{%- endif %}
-      <li role="none"><a role="menuitem" class="start-item{% if is_here %} is-here{% endif %}" href="{{ item.url | relative_url }}"{% if is_here %} aria-current="page"{% endif %}>
-        <svg class="icon icon-32" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg><span>{{ item.title }}</span></a></li>
+      <li role="none"><a role="menuitem" class="start-item{% if is_here %} is-here{% endif %}" href="{{ item.url | relative_url }}"{% if is_here %} aria-current="page"{% endif %}{% if item.new_tab %} target="_blank" rel="noopener"{% endif %}>
+        {% if item.image %}<img class="icon icon-32" src="{{ item.image | relative_url }}" width="32" height="32" alt="">{% else %}<svg class="icon icon-32" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg>{% endif %}<span>{{ item.title }}</span></a></li>
       {%- endfor %}
       <li class="start-sep" role="separator"></li>
       <li role="none" class="has-sub">

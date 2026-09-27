@@ -1,8 +1,10 @@
 # Main sections. Used for the desktop icons, the Start menu and the mobile menu.
-# `icon` refers to a symbol id in _includes/icons.svg
+# `icon` refers to a symbol id in _includes/icons.svg (`image` uses a picture instead);
+# `new_tab: true` opens the link in a new tab
 - { title: About Me,     url: /,              icon: userfolder, desktop_label: "About Me" }
 - { title: Background,   url: /background/,   icon: briefcase, desktop_label: "Background" }
 - { title: Publications, url: /publications/, icon: book,      desktop_label: "Publications" }
 - { title: CV,           url: /cv/,           icon: document,  desktop_label: "CV.pdf" }
 - { title: Updates,      url: /updates/,      icon: notepad,   desktop_label: "Updates" }
 - { title: Gallery,      url: /gallery/,      icon: pictures,  desktop_label: "My Pictures" }
+- { title: Mini DENIS,   url: /mini-denis/,   icon: denis,     image: /mini-denis/img/denis_64.png, desktop_label: "Mini DENIS", new_tab: true }

@@ -138,6 +138,33 @@ Links like `/gallery/reykjavik/#photo-4` open a specific photo.
 
 ---
 
+## Mini DENIS
+
+`mini-denis/` is the browser version of DENIS (Estimate and Pre-Analysis tabs), opened from the
+"Mini DENIS" desktop icon in a new tab. It is a plain static page: the DENIS Python code runs in the
+visitor's browser with [Pyodide](https://pyodide.org), so the site only serves files and nothing is
+uploaded or stored.
+
+| What                                   | Where                                         |
+|----------------------------------------|-----------------------------------------------|
+| Page, splash, menus, About box         | `mini-denis/index.html`, `mini-denis/js/app.js` |
+| Estimate / Pre-Analysis tabs           | `mini-denis/js/estimate.js`, `mini-denis/js/preanalysis.js` |
+| Styles (incl. phone layout)            | `mini-denis/css/denis.css`                    |
+| Python engine glue                     | `mini-denis/py/denis_web/`                    |
+| DENIS code copied from the desktop app | `mini-denis/py/vendor/` (made by `--sync`, not in git) |
+| Pinned pure-Python wheels              | `mini-denis/wheels/`                          |
+
+After changing anything under `mini-denis/py/`, rebuild the bundle the page loads:
+
+```
+python tools/build_mini_denis.py                     # rebuilds mini-denis/denis-py.zip
+python tools/build_mini_denis.py --sync "<DENIS folder>"   # first copy a newer DENIS version in
+```
+
+`mini-denis/py/` itself is not published (it ships inside `denis-py.zip`).
+
+---
+
 ## Structure
 
 ```
@@ -152,13 +179,17 @@ _sass/ + assets/css/   styles (compiled by GitHub Pages)
 assets/js/             main.js (desktop), lightbox.js (gallery), crossref.js (figures and references),
                        updates.js (tag filter)
 images/albums/         album photos
-tools/                 preview / publish / new-update scripts, add_album.py
+mini-denis/             Mini DENIS (browser version of DENIS, see above)
+tools/                 preview / publish / new-update scripts, add_album.py, build_mini_denis.py
 ```
 
-No build step or JavaScript framework: everything runs on GitHub Pages' built-in Jekyll.
+No build step or JavaScript framework for the site itself: everything runs on GitHub Pages' built-in Jekyll.
 To run things by hand: `bundle exec jekyll serve` (preview) and a normal `git commit` + `git push` (publish).
 
 ## Credits
 
 - Pixel "MS Sans Serif" webfont from [98.css](https://github.com/jdan/98.css) (MIT).
 - Icons are original pixel art drawn for this site.
+- Mini DENIS: [Pyodide](https://pyodide.org) (MPL-2.0), [Plotly.js](https://plotly.com/javascript/) (MIT),
+  [Lucide](https://lucide.dev) icons (ISC), [satlas2](https://iks-nm.github.io/satlas2/index.html) and cls_tools (GPL-3.0, licence in
+  `mini-denis/py/vendor/clstools/`).

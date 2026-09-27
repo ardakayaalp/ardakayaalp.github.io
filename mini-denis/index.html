@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini DENIS</title>
+<meta name="description" content="Mini DENIS: the Estimate and Pre-Analysis tabs of DENIS (Doppler Estimation and Numerical Inference for Spectroscopy) running in the browser. Files stay on your computer.">
+<link rel="icon" href="img/denis.ico">
+<link rel="stylesheet" href="css/denis.css">
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist-min@4.1.1/plotly.min.js" defer></script>
+<script type="module" src="js/app.js"></script>
+</head>
+<body>
+
+<!-- Splash: same composition as the desktop QSplashScreen (main_window.py main()) -->
+<div id="splash" class="splash" role="status" aria-live="polite">
+  <div class="splash-card">
+    <img src="img/denis_512.png" width="512" height="512" alt="DENIS logo">
+    <div class="splash-title">DENIS</div>
+    <div class="splash-sub">Mini DENIS <span data-version>v1.1.0</span> &middot; Doppler Estimation and Numerical Inference for Spectroscopy</div>
+    <div class="splash-progress"><div class="progress"><div class="progress-chunk" id="splash-bar"></div></div>
+      <div class="splash-msg" id="splash-msg">Starting</div></div>
+  </div>
+</div>
+
+<div id="app" class="app" hidden>
+  <nav class="menubar" id="menubar" aria-label="Menu"></nav>
+  <div class="main-tabs" role="tablist" aria-label="DENIS tabs">
+    <button role="tab" class="main-tab" data-tab="estimate" aria-selected="true"><img src="img/lucide/sigma.svg" alt="">Estimate</button>
+    <button role="tab" class="main-tab" data-tab="preanalysis" aria-selected="false"><img src="img/lucide/eye.svg" alt="">Pre-Analysis</button>
+  </div>
+  <main class="tab-pane" id="pane-estimate" data-pane="estimate"></main>
+  <main class="tab-pane" id="pane-preanalysis" data-pane="preanalysis" hidden></main>
+  <footer class="statusbar">
+    <span id="status-msg">Ready</span>
+    <span class="status-right" id="engine-status" title="Python engine"></span>
+  </footer>
+</div>
+
+<noscript><p class="noscript">Mini DENIS needs JavaScript.</p></noscript>
+</body>
+</html>
