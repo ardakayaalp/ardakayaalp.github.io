@@ -1,0 +1,32 @@
+# Newest first. Your own name is highlighted automatically ("A. Kayaalp").
+# type: article | thesis | preprint | proceedings
+- title: A quantal diffusion approach for multinucleon transfer in heavy-ion collisions
+  authors: A. Kayaalp, M. Arik, S. E. Ocal, O. Yilmaz, S. Ayik, A. S. Umar
+  venue: Nuclear Physics A
+  details: "1050, 122916"
+  year: 2024
+  type: article
+  doi: 10.1016/j.nuclphysa.2024.122916
+
+- title: A theoretical study on quasifission and fusion-fission processes in heavy-ion collisions
+  authors: A. Kayaalp, S. E. Ocal, B. Yaprakli, M. Arik, S. Ayik, O. Yilmaz, A. S. Umar
+  venue: The European Physical Journal A
+  details: "60, 79"
+  year: 2024
+  type: article
+  doi: 10.1140/epja/s10050-024-01303-9
+
+- title: Application of the quantal diffusion approach based on the stochastic mean-field theory
+  authors: A. Kayaalp
+  venue: M.Sc. Thesis, Middle East Technical University
+  year: 2024
+  type: thesis
+  url: https://open.metu.edu.tr/handle/11511/110544
+
+- title: "METU-DBL: a cost effective proton irradiation facility"
+  authors: E. Karadöller, S. Uzun Duran, U. Kılıç, R. K. Hashmani, M. B. Demirköz, I. Efthymiopoulos, A. B. Can, S. Çakmakoğlu, B. Muçogllava, A. Kayaalp, C. Zorlu
+  venue: Journal of Instrumentation
+  details: "18, T06010"
+  year: 2023
+  type: article
+  doi: 10.1088/1748-0221/18/06/T06010

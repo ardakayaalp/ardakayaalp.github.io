@@ -1,0 +1,31 @@
+---
+layout: default
+---
+{%- comment -%}
+  A single-window page. Front matter:
+    title         heading + taskbar label
+    window_title  text in the title bar (defaults to title)
+    icon          icon id from icons.svg
+    address       optional explorer-style address bar text
+    status        optional status bar text (left)
+    wide          true for a wider window
+{%- endcomment -%}
+{%- assign wtitle = page.window_title | default: page.title -%}
+<article class="window{% if page.wide %} window--wide{% endif %}" data-window data-title="{{ page.title }}" data-icon="{{ page.icon | default: 'document' }}">
+  {% include titlebar.html title=wtitle icon=page.icon %}
+  {%- if page.address %}
+  <div class="address-bar">
+    <span class="address-label">Address</span>
+    <span class="field address-field"><svg class="icon icon-16" aria-hidden="true"><use href="#i-{{ page.icon | default: 'folder' }}"/></svg>{{ page.address }}</span>
+  </div>
+  {%- endif %}
+  <div class="window-body">
+    {%- unless page.hide_heading %}
+    <h1 class="page-heading">{{ page.title }}</h1>
+    {%- endunless %}
+    {{ content }}
+  </div>
+  {%- if page.status %}
+  <div class="status-bar"><p class="status-field">{{ page.status }}</p><p class="status-field status-field--end">{{ site.author.location }}</p></div>
+  {%- endif %}
+</article>

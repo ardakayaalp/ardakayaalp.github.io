@@ -1,0 +1,64 @@
+---
+layout: default
+icon: notepad
+---
+{%- include update-info.html page=page -%}
+{%- include updates-list.html -%}
+{%- comment -%} older / newer neighbours in the folder order {%- endcomment -%}
+{%- assign newer = nil -%}
+{%- assign older = nil -%}
+{%- for u in updates -%}
+  {%- if u.url == page.url -%}
+    {%- assign i_newer = forloop.index0 | minus: 1 -%}
+    {%- assign i_older = forloop.index0 | plus: 1 -%}
+    {%- if forloop.index0 > 0 %}{% assign newer = updates[i_newer] %}{% endif -%}
+    {%- assign older = updates[i_older] -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- comment -%} Drop a leading <h1> if the file has both a front-matter title and a "# Heading" {%- endcomment -%}
+{%- assign body = content | strip -%}
+{%- assign head3 = body | slice: 0, 3 -%}
+{%- if head3 == "<h1" -%}
+  {%- capture body -%}{%- assign _parts = body | split: "</h1>" -%}{% for _x in _parts offset: 1 %}{% unless forloop.first %}</h1>{% endunless %}{{ _x }}{% endfor %}{%- endcapture -%}
+{%- endif -%}
+{%- assign words = body | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 200 | plus: 1 -%}
+{%- assign wtitle = upd_folder | slice: 11, 200 | append: ".txt - Notepad" -%}
+<article class="window window--post" data-window data-title="{{ upd_title }}" data-icon="notepad">
+  {% include titlebar.html title=wtitle icon="notepad" close="/updates/" %}
+  <nav class="menu-bar" aria-label="Update">
+    <a href="{{ '/updates/' | relative_url }}"><svg class="glyph" aria-hidden="true"><use href="#g-left"/></svg>All updates</a>
+    {%- if older %}<a href="{{ older.url | relative_url }}" rel="prev">Older</a>{% endif %}
+    {%- if newer %}<a href="{{ newer.url | relative_url }}" rel="next">Newer</a>{% endif %}
+  </nav>
+  <div class="window-body window-body--paper">
+    <header class="post-header">
+      <h1 class="page-heading">{{ upd_title }}</h1>
+      <p class="post-meta">
+        {%- if page.published == false %}<span class="tag tag--draft">draft</span> {% endif -%}
+        <time datetime="{{ upd_date }}">{{ upd_date | date: "%-d %B %Y" }}</time>
+        · {{ minutes }} min read
+        {%- if page.tags.size > 0 %} ·
+          {%- for tag in page.tags %} <a class="tag" href="{{ '/updates/' | relative_url }}?tag={{ tag | uri_escape }}">{{ tag }}</a>{% endfor %}
+        {%- endif %}
+      </p>
+    </header>
+    <div class="prose" data-crossref data-section-numbers="{% if page.section_numbers == false %}false{% else %}true{% endif %}">
+{{ body }}
+    </div>
+  </div>
+  {%- if older or newer %}
+  <nav class="post-nav" aria-label="More updates">
+    {%- if older %}{% include update-info.html page=older %}
+    <a class="btn post-nav-prev" href="{{ older.url | relative_url }}" rel="prev"><svg class="glyph" aria-hidden="true"><use href="#g-left"/></svg><span><small>Older</small>{{ upd_title }}</span></a>
+    {%- else %}<span></span>{% endif %}
+    {%- if newer %}{% include update-info.html page=newer %}
+    <a class="btn post-nav-next" href="{{ newer.url | relative_url }}" rel="next"><span><small>Newer</small>{{ upd_title }}</span><svg class="glyph" aria-hidden="true"><use href="#g-right"/></svg></a>
+    {%- endif %}
+  </nav>
+  {%- endif %}
+  <div class="status-bar">
+    <p class="status-field">{{ words }} words</p>
+    <p class="status-field status-field--end">Ln 1, Col 1</p>
+  </div>
+</article>

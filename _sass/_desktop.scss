@@ -1,0 +1,215 @@
+/* ==========================================================================
+   Desktop, desktop icons, taskbar and Start menu
+   ========================================================================== */
+.desktop {
+  min-height: 100vh;
+  padding: 20px 20px calc(var(--taskbar-h) + var(--safe-b) + 24px) calc(var(--icons-w) + 20px);
+}
+.workspace { max-width: 1120px; margin: 0 auto; }
+
+/* ---- desktop icons ---- */
+.desktop-icons {
+  position: fixed;
+  top: 12px;
+  left: 8px;
+  display: grid;
+  grid-auto-rows: 78px;
+  gap: 4px;
+  width: var(--icons-w);
+}
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 2px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font: var(--ui-size) / 1.3 var(--ui-font);
+}
+.desktop-icon:visited { color: #fff; }
+.desktop-icon span { padding: 1px 3px; }
+.desktop-icon:hover span { text-decoration: underline; }
+.desktop-icon:focus { outline: none; }
+.desktop-icon:focus-visible span, .desktop-icon:active span { background: var(--highlight); outline: 1px dotted #fff; }
+.desktop-icon:focus-visible svg, .desktop-icon:active svg { filter: brightness(.65) sepia(1) hue-rotate(185deg) saturate(4); }
+
+/* small screens: icons become an "app grid" on the home page only */
+@media (max-width: 1023px) {
+  .desktop { padding-left: 20px; }
+  .desktop-icons { display: none; }
+  .page-home .desktop-icons {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: auto;
+    width: auto;
+    max-width: 880px;
+    margin: 0 auto 16px;
+  }
+}
+@media (max-width: 760px) {
+  .desktop { padding: 10px 8px calc(var(--taskbar-h) + var(--safe-b) + 16px); }
+  .page-home .desktop-icons { grid-template-columns: repeat(3, 1fr); gap: 6px 4px; margin-bottom: 12px; }
+  .desktop-icon { padding: 8px 2px; font-size: 12px; }
+}
+
+/* ---- taskbar ---- */
+.taskbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: calc(var(--taskbar-h) + var(--safe-b));
+  padding: 3px 2px calc(3px + var(--safe-b));
+  background: var(--face);
+  box-shadow: inset 0 1px var(--b-mid), inset 0 2px var(--b-light), 0 -1px 0 rgba(0, 0, 0, .4);
+  font: var(--ui-size) var(--ui-font);
+}
+
+.start-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  padding: 0 7px 0 4px;
+  border: 0;
+  background: var(--face);
+  color: var(--text-strong);
+  box-shadow: var(--raised);
+  font: 700 var(--ui-size) var(--ui-font);
+  cursor: pointer;
+}
+.start-button[aria-expanded="true"] { box-shadow: var(--pressed); background-image: var(--dither); background-size: 2px 2px; }
+.start-button[aria-expanded="true"] > * { transform: translate(1px, 1px); }
+.start-button:focus-visible { outline: 1px dotted var(--text); outline-offset: -4px; }
+
+.taskbar-sep { align-self: stretch; width: 2px; margin: 0 2px; border-left: 1px solid var(--b-shadow); border-right: 1px solid var(--b-light); }
+
+.tasks { display: flex; flex: 1; gap: 3px; min-width: 0; height: 100%; }
+.task {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 1 170px;
+  min-width: 0;
+  height: 100%;
+  padding: 0 7px;
+  border: 0;
+  background: var(--face);
+  color: var(--text);
+  box-shadow: var(--raised);
+  font: var(--ui-size) var(--ui-font);
+  text-decoration: none;
+  cursor: pointer;
+}
+.task:visited { color: var(--text); }
+.task span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.task.is-active { box-shadow: var(--pressed); background-image: var(--dither); background-size: 2px 2px; font-weight: 700; color: var(--text-strong); }
+.task:focus-visible { outline: 1px dotted var(--text); outline-offset: -4px; }
+
+.tray {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  padding: 0 8px 0 6px;
+  box-shadow: var(--thin-sunken);
+}
+.tray-icon { display: flex; }
+.clock { min-width: 44px; text-align: right; white-space: nowrap; }
+
+@media (max-width: 760px) {
+  .task { flex-basis: 44px; justify-content: center; padding: 0 6px; }
+  .task.is-active { flex-basis: 140px; justify-content: flex-start; }
+  .task:not(.is-active) span { display: none; }
+  .tray-icon[aria-label="Email"] { display: none; }
+}
+
+/* ---- Start menu ---- */
+.start-menu {
+  position: absolute;
+  left: 2px;
+  bottom: calc(100% - var(--safe-b) - 2px);
+  display: flex;
+  min-width: 230px;
+  padding: 3px;
+  background: var(--face);
+  box-shadow: var(--raised), 3px 3px 0 rgba(0, 0, 0, .4);
+}
+.start-banner {
+  display: flex;
+  align-items: flex-end;
+  width: 26px;
+  padding: 6px 0;
+  background: linear-gradient(0deg, #0b1f5e, #2d66bf);
+}
+.start-banner span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font: 18px / 26px var(--body-font);
+  letter-spacing: .02em;
+  color: #b8c7e6;
+  white-space: nowrap;
+}
+.start-banner b { color: #fff; font-weight: 700; }
+
+.start-items, .start-sub { list-style: none; margin: 0; padding: 0; }
+.start-items { flex: 1; min-width: 0; }
+.start-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 40px;
+  padding: 3px 22px 3px 8px;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: var(--ui-size) var(--ui-font);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.start-item:visited { color: var(--text); }
+.start-item.small { min-height: 26px; gap: 8px; }
+.start-item.is-here span { font-weight: 700; }
+.start-item:hover, .start-item:focus-visible, .has-sub.is-open > .start-item {
+  background: var(--highlight);
+  color: var(--highlight-text);
+  outline: none;
+}
+.start-item .chev { width: 8px; height: 8px; margin-left: auto; margin-right: -12px; }
+.start-sep { height: 2px; margin: 3px 2px; border-top: 1px solid var(--b-shadow); border-bottom: 1px solid var(--b-light); }
+
+.has-sub { position: relative; }
+.start-sub {
+  position: absolute;
+  bottom: -3px;           /* grow upwards: the menu sits on the bottom edge */
+  left: 100%;
+  display: none;
+  min-width: 190px;
+  padding: 3px;
+  background: var(--face);
+  box-shadow: var(--raised), 3px 3px 0 rgba(0, 0, 0, .4);
+}
+.has-sub.is-open > .start-sub { display: block; }
+@media (hover: hover) and (pointer: fine) {
+  .has-sub:hover > .start-sub { display: block; }
+  .has-sub:hover > .start-item { background: var(--highlight); color: var(--highlight-text); }
+}
+
+@media (max-width: 760px), (pointer: coarse) {
+  .start-menu { right: auto; width: 290px; max-width: calc(100vw - 4px); max-height: calc(100vh - var(--taskbar-h) - 16px); max-height: calc(100dvh - var(--taskbar-h) - var(--safe-b) - 16px); overflow-y: auto; }
+  .start-item { min-height: 46px; font-size: 13px; }
+  .start-item.small { min-height: 42px; }
+  .start-sub { position: static; display: none; box-shadow: none; padding: 0 0 0 20px; background: none; }
+  .has-sub:hover > .start-sub { display: none; }
+  .has-sub.is-open > .start-sub { display: block; }
+  .start-item .chev { transform: rotate(90deg); }
+  .has-sub.is-open .chev { transform: rotate(-90deg); }
+}

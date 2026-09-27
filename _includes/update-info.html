@@ -1,0 +1,32 @@
+{%- comment -%}
+  Details of one update. Call with: include update-info.html page=some_update [excerpt=true]
+  Front matter wins; otherwise everything comes from the folder name
+  (updates/2026-10-02-beam-time/...) and the text.
+
+  Sets:
+    upd_folder   "2026-10-02-beam-time"
+    upd_date     "2026-10-02"   (front matter `date:` or the folder name)
+    upd_title    front matter title, first "# Heading", or "beam-time"
+    upd_excerpt  (excerpt=true only) `description:` or the first paragraph
+{%- endcomment -%}
+{%- assign _u = include.page -%}
+{%- assign upd_folder = _u.path | split: "/" | slice: 1 | first -%}
+{%- if _u.date -%}
+  {%- assign upd_date = _u.date | date: "%Y-%m-%d" -%}
+{%- else -%}
+  {%- assign upd_date = upd_folder | slice: 0, 10 -%}
+{%- endif -%}
+{%- assign _slug = upd_folder | slice: 11, 200 | replace: "-", " " | capitalize -%}
+{%- assign upd_title = _u.title | default: _slug -%}
+{%- if include.excerpt -%}
+  {%- assign upd_excerpt = _u.description | default: "" -%}
+  {%- if upd_excerpt == "" -%}
+    {%- comment -%} first non-empty paragraph (skips paragraphs that are only a figure) {%- endcomment -%}
+    {%- assign _paras = _u.content | markdownify | split: "<p>" -%}
+    {%- for _p in _paras offset: 1 -%}
+      {%- assign _t = _p | split: "</p>" | first | strip_html | strip -%}
+      {%- assign _t2 = _t | slice: 0, 2 -%}
+      {%- if _t != "" and _t2 != "{#" -%}{%- assign upd_excerpt = _t -%}{%- break -%}{%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endif -%}

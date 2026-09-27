@@ -1,0 +1,18 @@
+{%- comment -%}
+  Window title bar.
+  include.title    text in the bar
+  include.icon     icon id (see icons.svg)
+  include.close    url the close button goes to (defaults to home)
+{%- endcomment -%}
+{%- assign close_url = include.close | default: '/' -%}
+<div class="title-bar">
+  <div class="title-bar-text">
+    <svg class="icon icon-16" aria-hidden="true"><use href="#i-{{ include.icon | default: 'document' }}"/></svg>
+    <span>{{ include.title }}</span>
+  </div>
+  <div class="title-bar-controls">
+    <button type="button" class="tb-btn" data-action="minimize" aria-label="Minimize"><svg aria-hidden="true"><use href="#g-min"/></svg></button>
+    <button type="button" class="tb-btn tb-max" data-action="maximize" aria-label="Maximize"><svg aria-hidden="true"><use href="#g-max"/></svg></button>
+    <a class="tb-btn" data-action="close" href="{{ close_url | relative_url }}" aria-label="Close"><svg aria-hidden="true"><use href="#g-close"/></svg></a>
+  </div>
+</div>

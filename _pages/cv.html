@@ -1,0 +1,33 @@
+---
+title: CV
+window_title: CV.pdf - Document Viewer
+permalink: /cv/
+icon: document
+wide: true
+hide_heading: true
+description: Curriculum vitae of Arda Kayaalp (PDF).
+redirect_from:
+  - /resume/
+---
+<div class="toolbar toolbar--inline cv-toolbar" role="toolbar" aria-label="CV">
+  <a class="tool-btn" href="{{ '/files/CV.pdf' | relative_url }}" download><svg class="glyph" aria-hidden="true"><use href="#g-down"/></svg><span>Download</span></a>
+  <a class="tool-btn" href="{{ '/files/CV.pdf' | relative_url }}" target="_blank" rel="noopener"><svg class="glyph" aria-hidden="true"><use href="#g-full"/></svg><span>Open in new tab</span></a>
+  <a class="tool-btn" href="{{ '/background/' | relative_url }}"><svg class="icon icon-16" aria-hidden="true"><use href="#i-briefcase"/></svg><span>Read it as a web page</span></a>
+</div>
+
+<h1 class="sr-only">Curriculum vitae</h1>
+<div class="pdf-frame field">
+  <object data="{{ '/files/CV.pdf' | relative_url }}#view=FitH" type="application/pdf" aria-label="CV (PDF)">
+    <div class="pdf-fallback">
+      <svg class="icon icon-48" aria-hidden="true"><use href="#i-document"/></svg>
+      <p>Your browser can't show the PDF here.</p>
+      <a class="btn btn-default" href="{{ '/files/CV.pdf' | relative_url }}">Open CV.pdf</a>
+    </div>
+  </object>
+</div>
+<div class="pdf-mobile">
+  <svg class="icon icon-48" aria-hidden="true"><use href="#i-document"/></svg>
+  <p><strong>CV.pdf</strong><br><span class="muted">2 pages · PDF</span></p>
+  <a class="btn btn-default btn-large" href="{{ '/files/CV.pdf' | relative_url }}">Open CV</a>
+  <a class="btn btn-large" href="{{ '/background/' | relative_url }}">Read it as a web page</a>
+</div>

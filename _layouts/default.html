@@ -1,33 +1,25 @@
----
-layout: compress
----
-
-{% include base_path %}
-
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
-  <head>
-    <meta name="google-site-verification" content="bHq-u2VY65WzGecsb6qBkvSy3ITfpdsvM3cO4HRfl8E">
-    {% include head.html %}
-    {% include head/custom.html %}
-    
-  </head>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+{% include head.html %}
+</head>
+<body class="{% if page.layout == 'home' %}page-home{% else %}page-inner{% endif %}">
+{% include icons.svg %}
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <body>
+<div class="desktop">
+  {% include desktop-icons.html %}
+  <main id="main" class="workspace">
+{{ content }}
+  </main>
+</div>
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+{% include taskbar.html %}
+{% include dialogs.html %}
 
-    {{ content }}
-
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
-
-    {% include scripts.html %}
-
-  </body>
+<script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{% if page.layout == 'album' %}<script src="{{ '/assets/js/lightbox.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>{% endif %}
+{% if page.update %}<script src="{{ '/assets/js/crossref.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>{% endif %}
+{% if page.url contains '/updates/' %}<script src="{{ '/assets/js/updates.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>{% endif %}
+</body>
 </html>

@@ -1,0 +1,8 @@
+<nav class="desktop-icons" aria-label="Sections">
+  {%- for item in site.data.navigation %}
+  <a class="desktop-icon" href="{{ item.url | relative_url }}">
+    <svg class="icon icon-32" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg>
+    <span>{{ item.desktop_label | default: item.title }}</span>
+  </a>
+  {%- endfor %}
+</nav>

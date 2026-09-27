@@ -1,0 +1,66 @@
+---
+layout: default
+icon: pictures
+---
+{%- include album-scan.html album=page -%}
+{%- assign up_url = '/gallery/' | relative_url -%}
+{%- assign crumb = "" -%}
+{%- if page.country -%}
+  {%- assign country_id = page.country | slugify: "latin" -%}
+  {%- assign up_url = up_url | append: '#' | append: country_id -%}
+  {%- assign crumb = page.country | append: '\' -%}
+{%- endif -%}
+<article class="window window--wide window--album" data-window data-title="{{ page.title }}" data-icon="folder">
+  {% include titlebar.html title=page.title icon="folder" close="/gallery/" %}
+  <div class="toolbar" role="toolbar" aria-label="Album">
+    <a class="tool-btn" href="{{ up_url }}"><svg class="glyph" aria-hidden="true"><use href="#g-up"/></svg><span>Up</span></a>
+    <span class="toolbar-sep" aria-hidden="true"></span>
+    {%- if album_count > 0 %}
+    <button type="button" class="tool-btn" data-slideshow><svg class="glyph" aria-hidden="true"><use href="#g-play"/></svg><span>Slideshow</span></button>
+    {%- endif %}
+    <div class="toolbar-group view-toggle" role="group" aria-label="Thumbnail size">
+      <button type="button" class="tool-btn" data-thumbs="large" aria-pressed="true" title="Large thumbnails"><svg class="glyph" aria-hidden="true"><use href="#g-max"/></svg><span class="sr-only">Large thumbnails</span></button>
+      <button type="button" class="tool-btn" data-thumbs="small" aria-pressed="false" title="Small thumbnails"><svg class="glyph" aria-hidden="true"><use href="#g-grid"/></svg><span class="sr-only">Small thumbnails</span></button>
+    </div>
+  </div>
+  <div class="address-bar">
+    <span class="address-label">Address</span>
+    <span class="field address-field"><svg class="icon icon-16" aria-hidden="true"><use href="#i-folder"/></svg>C:\My Pictures\{{ crumb }}{{ page.title }}</span>
+  </div>
+  <div class="window-body">
+    <header class="album-header">
+      <h1 class="page-heading">{{ page.title }}</h1>
+      <p class="album-meta">
+        {%- if page.location %}<span>{{ page.location }}</span> · {% endif -%}
+        <span class="album-period">{{ album_period }}</span>
+        · {{ album_count }} photo{% if album_count != 1 %}s{% endif %}
+      </p>
+      {%- if content != "" %}<div class="prose album-description">{{ content }}</div>{% endif %}
+    </header>
+
+    {%- if album_count > 0 %}
+    <ul class="photo-grid" data-gallery data-album-title="{{ page.title | escape }}">
+      {%- for item in album_items %}
+      {%- assign parts = item | split: "¦" -%}
+      {%- assign full = parts[0] -%}
+      {%- assign thumb = parts[1] -%}
+      {%- assign caption = parts[2] | default: "" -%}
+      {%- assign pdate = parts[3] | default: "" -%}
+      {%- capture tip -%}{{ caption }}{% if pdate != "" %}{% if caption != "" %} · {% endif %}{{ pdate | date: "%-d %b %Y" }}{% endif %}{%- endcapture -%}
+      {%- assign fname = full | split: "/" | last -%}
+      <li>
+        <a class="photo" href="{{ full | relative_url }}" data-index="{{ forloop.index0 }}" data-caption="{{ caption | escape }}" data-name="{{ fname }}"{% if pdate != "" %} data-date="{{ pdate }}"{% endif %}{% if tip != "" %} title="{{ tip | escape }}"{% endif %}>
+          <img src="{{ thumb | relative_url }}" alt="{{ caption | default: fname | escape }}" loading="lazy" decoding="async">
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p class="muted">This album is empty. Put photos in <code>{{ album_dir }}</code>.</p>
+    {%- endif %}
+  </div>
+  <div class="status-bar">
+    <p class="status-field">{{ album_count }} object(s)</p>
+    <p class="status-field status-field--end">{{ album_period }}</p>
+  </div>
+</article>

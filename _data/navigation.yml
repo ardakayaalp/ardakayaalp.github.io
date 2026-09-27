@@ -1,10 +1,8 @@
-# main links links
-main:
-  - title: "Education & Research Background"
-    url: /background/
-   
-  - title: "CV"
-    url: /files/CV.pdf
-    
-  - title: "Publications"
-    url: "https://scholar.google.com/citations?user=Iy0mt_oAAAAJ&hl=en"
+# Main sections. Used for the desktop icons, the Start menu and the mobile menu.
+# `icon` refers to a symbol id in _includes/icons.svg
+- { title: About Me,     url: /,              icon: userfolder, desktop_label: "About Me" }
+- { title: Background,   url: /background/,   icon: briefcase, desktop_label: "Background" }
+- { title: Publications, url: /publications/, icon: book,      desktop_label: "Publications" }
+- { title: CV,           url: /cv/,           icon: document,  desktop_label: "CV.pdf" }
+- { title: Updates,      url: /updates/,      icon: notepad,   desktop_label: "Updates" }
+- { title: Gallery,      url: /gallery/,      icon: pictures,  desktop_label: "My Pictures" }

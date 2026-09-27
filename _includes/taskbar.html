@@ -1,0 +1,54 @@
+{%- comment -%} Find the nav entry for the current page (for the taskbar button) {%- endcomment -%}
+{%- assign current = site.data.navigation | where: "url", "/" | first -%}
+{%- for item in site.data.navigation -%}
+  {%- if item.url != '/' and page.url contains item.url -%}{%- assign current = item -%}{%- endif -%}
+{%- endfor -%}
+
+<div class="taskbar" role="navigation" aria-label="Site">
+  <button type="button" class="start-button" id="start-button" aria-haspopup="true" aria-expanded="false" aria-controls="start-menu">
+    <svg class="icon icon-16" aria-hidden="true"><use href="#i-atom"/></svg><span>Start</span>
+  </button>
+  <span class="taskbar-sep" aria-hidden="true"></span>
+
+  <div class="tasks" id="tasks">
+    {%- comment -%} Filled by JS from the windows on the page; this is the no-JS fallback {%- endcomment -%}
+    <a class="task is-active" href="{{ page.url | relative_url }}" aria-current="page">
+      <svg class="icon icon-16" aria-hidden="true"><use href="#i-{{ page.icon | default: current.icon }}"/></svg>
+      <span>{{ page.title | default: current.title }}</span>
+    </a>
+  </div>
+
+  <div class="tray">
+    <a class="tray-icon" href="mailto:{{ site.author.email }}" title="Email me" aria-label="Email"><svg class="icon icon-16" aria-hidden="true"><use href="#i-mail"/></svg></a>
+    <time class="clock" id="clock" aria-label="Local time"></time>
+  </div>
+
+  <div class="start-menu" id="start-menu" hidden>
+    <div class="start-banner" aria-hidden="true"><span>OS<b>97</b></span></div>
+    <ul class="start-items" role="menu" aria-label="Start menu">
+      {%- for item in site.data.navigation %}
+      {%- if item.url == '/' -%}{%- assign is_here = false -%}{%- if page.url == '/' -%}{%- assign is_here = true -%}{%- endif -%}
+      {%- else -%}{%- assign is_here = false -%}{%- if page.url contains item.url -%}{%- assign is_here = true -%}{%- endif -%}{%- endif %}
+      <li role="none"><a role="menuitem" class="start-item{% if is_here %} is-here{% endif %}" href="{{ item.url | relative_url }}"{% if is_here %} aria-current="page"{% endif %}>
+        <svg class="icon icon-32" aria-hidden="true"><use href="#i-{{ item.icon }}"/></svg><span>{{ item.title }}</span></a></li>
+      {%- endfor %}
+      <li class="start-sep" role="separator"></li>
+      <li role="none" class="has-sub">
+        <button type="button" role="menuitem" class="start-item" aria-haspopup="true" aria-expanded="false" id="links-toggle">
+          <svg class="icon icon-32" aria-hidden="true"><use href="#i-globe"/></svg><span>Find me on</span><svg class="chev" aria-hidden="true"><use href="#g-right"/></svg>
+        </button>
+        <ul class="start-sub" role="menu" aria-label="Profiles">
+          {%- for s in site.social %}
+          <li role="none"><a role="menuitem" class="start-item small" href="{{ s.url }}" target="_blank" rel="noopener me">
+            <svg class="icon icon-16" aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg><span>{{ s.name }}</span></a></li>
+          {%- endfor %}
+        </ul>
+      </li>
+      <li role="none"><a role="menuitem" class="start-item" href="mailto:{{ site.author.email }}">
+        <svg class="icon icon-32" aria-hidden="true"><use href="#i-mail"/></svg><span>Email me</span></a></li>
+      <li class="start-sep" role="separator"></li>
+      <li role="none"><button type="button" role="menuitem" class="start-item" data-action="shutdown">
+        <svg class="icon icon-32" aria-hidden="true"><use href="#i-power"/></svg><span>Shut Down…</span></button></li>
+    </ul>
+  </div>
+</div>

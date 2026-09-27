@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Design tokens: "dark Windows 98"
+   Classic 98 bevels are four 1px lines (outer light, inner light, inner shadow,
+   outer shadow). Here the "light" lines are mid-greys so the chrome reads as
+   dark plastic instead of beige.
+   ========================================================================== */
+@font-face {
+  font-family: "Pixel MS Sans Serif";
+  src: url("../fonts/ms_sans_serif.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pixel MS Sans Serif";
+  src: url("../fonts/ms_sans_serif_bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  /* surfaces */
+  --desktop: #0c2d2d;
+  --desktop-2: #0e3232;
+  --face: #2c2c30;
+  --face-hover: #36363b;
+  --face-pressed: #26262a;
+  --field: #141416;
+  --field-alt: #1b1b1e;
+
+  /* bevel lines */
+  --b-light: #626269;   /* outer highlight  (white in classic) */
+  --b-mid: #46464c;     /* inner highlight  (#dfdfdf in classic) */
+  --b-shadow: #19191c;  /* inner shadow     (#808080 in classic) */
+  --b-dark: #000;       /* outer shadow     (#0a0a0a in classic) */
+
+  /* text */
+  --text: #e6e6e6;
+  --text-strong: #fff;
+  --muted: #a4a4ab;
+  --dim: #74747b;
+
+  /* accents */
+  --title: linear-gradient(90deg, #0b1f5e 0%, #2d66bf 100%);
+  --title-inactive: linear-gradient(90deg, #3b3b41 0%, #5b5b63 100%);
+  --highlight: #1f3f95;
+  --highlight-text: #fff;
+  --link: #85baff;
+  --link-visited: #c3a6ff;
+  --progress: #3c7be0;
+  --ok: #7bd88f;
+
+  /* composite bevels */
+  --raised:
+    inset -1px -1px var(--b-dark), inset 1px 1px var(--b-light),
+    inset -2px -2px var(--b-shadow), inset 2px 2px var(--b-mid);
+  --pressed:
+    inset -1px -1px var(--b-light), inset 1px 1px var(--b-dark),
+    inset -2px -2px var(--b-mid), inset 2px 2px var(--b-shadow);
+  --sunken:
+    inset -1px -1px var(--b-light), inset 1px 1px var(--b-shadow),
+    inset -2px -2px var(--b-mid), inset 2px 2px var(--b-dark);
+  --thin-raised: inset -1px -1px var(--b-dark), inset 1px 1px var(--b-light);
+  --thin-sunken: inset -1px -1px var(--b-light), inset 1px 1px var(--b-shadow);
+  --groove:
+    inset -1px -1px var(--b-light), inset 1px 1px var(--b-shadow),
+    inset -2px -2px var(--b-shadow), inset 2px 2px var(--b-light);
+  --dither: repeating-conic-gradient(var(--face) 0% 25%, #3a3a40 0% 50%);
+
+  /* type */
+  --ui-font: "Pixel MS Sans Serif", Tahoma, "Segoe UI", Verdana, sans-serif;
+  --ui-size: 11px;
+  --body-font: Tahoma, "Segoe UI", Verdana, system-ui, -apple-system, sans-serif;
+  --mono: Consolas, "Lucida Console", "Courier New", monospace;
+
+  /* layout */
+  --taskbar-h: 32px;
+  --icons-w: 96px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+@media (max-width: 760px), (pointer: coarse) {
+  :root {
+    --ui-size: 12px;
+    --taskbar-h: 44px;
+  }
+}

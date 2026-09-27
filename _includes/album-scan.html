@@ -1,0 +1,91 @@
+{%- comment -%}
+  Collects the photos of one album. Call with: include album-scan.html album=some_album
+  Photos live in /images/albums/<folder>/ (folder defaults to the album file name),
+  thumbnails (optional) in /images/albums/<folder>/thumbs/ with the same file name.
+  If the album front matter has a `photos:` list it is used (order + captions),
+  otherwise every image in the folder is shown in file-name order.
+
+  Each photo entry may have a `date:` (YYYY-MM-DD, when it was taken).
+
+  Sets:
+    album_items   array of "full¦thumb¦caption¦date" strings
+    album_count   number of photos
+    album_cover   thumbnail url of the cover photo
+    album_period  "Mar - Sep 2025" / "Oct 2024 - Sep 2026" from the photo dates
+                  (falls back to the album's own date)
+    album_from, album_to   first / last photo date as YYYY-MM-DD (for sorting)
+{%- endcomment -%}
+{%- assign _a = include.album -%}
+{%- assign _folder = _a.folder | default: _a.slug -%}
+{%- assign album_dir = '/images/albums/' | append: _folder | append: '/' -%}
+{%- assign _thumb_dir = album_dir | append: 'thumbs/' -%}
+{%- assign _statics = site.static_files | where: "album_photo", true | sort: "path" -%}
+{%- assign _exts = ".jpg,.jpeg,.png,.webp,.gif,.avif" | split: "," -%}
+
+{%- assign _thumbs = "|" -%}
+{%- for f in _statics -%}
+  {%- if f.path contains _thumb_dir -%}{%- assign _thumbs = _thumbs | append: f.path | append: "|" -%}{%- endif -%}
+{%- endfor -%}
+
+{%- assign _items = "" -%}
+{%- assign _dstr = "" -%}
+{%- if _a.photos -%}
+  {%- for p in _a.photos -%}
+    {%- assign _file = p.file | default: p -%}
+    {%- assign _full = album_dir | append: _file -%}
+    {%- assign _t = _thumb_dir | append: _file -%}
+    {%- assign _key = "|" | append: _t | append: "|" -%}
+    {%- unless _thumbs contains _key -%}{%- assign _t = _full -%}{%- endunless -%}
+    {%- assign _cap = p.caption | default: "" | replace: "¦", "" | replace: "§", "" -%}
+    {%- assign _d = "" -%}
+    {%- if p.date -%}{%- assign _d = p.date | date: "%Y-%m-%d" -%}{%- assign _dstr = _dstr | append: _d | append: "," -%}{%- endif -%}
+    {%- assign _items = _items | append: _full | append: "¦" | append: _t | append: "¦" | append: _cap | append: "¦" | append: _d | append: "§" -%}
+  {%- endfor -%}
+{%- else -%}
+  {%- for f in _statics -%}
+    {%- assign _ext = f.extname | downcase -%}
+    {%- if f.path contains album_dir and _exts contains _ext -%}
+      {%- unless f.path contains _thumb_dir -%}
+        {%- assign _t = _thumb_dir | append: f.name -%}
+        {%- assign _key = "|" | append: _t | append: "|" -%}
+        {%- unless _thumbs contains _key -%}{%- assign _t = f.path -%}{%- endunless -%}
+        {%- assign _items = _items | append: f.path | append: "¦" | append: _t | append: "¦" | append: "§" -%}
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- assign album_items = _items | split: "§" -%}
+{%- assign album_count = album_items | size -%}
+{%- assign album_cover = "" -%}
+{%- if _a.cover -%}
+  {%- assign _ct = _thumb_dir | append: _a.cover -%}
+  {%- assign _key = "|" | append: _ct | append: "|" -%}
+  {%- if _thumbs contains _key -%}{%- assign album_cover = _ct -%}{%- else -%}{%- assign album_cover = album_dir | append: _a.cover -%}{%- endif -%}
+{%- elsif album_count > 0 -%}
+  {%- assign _first = album_items | first | split: "¦" -%}
+  {%- assign album_cover = _first[1] -%}
+{%- endif -%}
+
+{%- assign _dl = _dstr | split: "," | sort -%}
+{%- assign album_from = _a.date | date: "%Y-%m-%d" -%}
+{%- assign album_to = album_from -%}
+{%- if _dl.size > 0 -%}
+  {%- assign _from = _dl | first -%}
+  {%- assign _to = _dl | last -%}
+  {%- assign album_from = _from -%}
+  {%- assign album_to = _to -%}
+  {%- assign _f = _from | date: "%b %Y" -%}
+  {%- assign _l = _to | date: "%b %Y" -%}
+  {%- assign _fy = _from | date: "%Y" -%}
+  {%- assign _ly = _to | date: "%Y" -%}
+  {%- if _f == _l -%}
+    {%- assign album_period = _f -%}
+  {%- elsif _fy == _ly -%}
+    {%- assign album_period = _from | date: "%b" | append: " - " | append: _l -%}
+  {%- else -%}
+    {%- assign album_period = _f | append: " - " | append: _l -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign album_period = _a.date | date: "%b %Y" -%}
+{%- endif -%}

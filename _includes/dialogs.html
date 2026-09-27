@@ -1,0 +1,28 @@
+<div class="dialog-backdrop" id="shutdown-dialog" hidden>
+  <div class="window dialog" role="dialog" aria-modal="true" aria-labelledby="shutdown-title">
+    <div class="title-bar">
+      <div class="title-bar-text"><span id="shutdown-title">Shut Down OS97</span></div>
+      <div class="title-bar-controls">
+        <button type="button" class="tb-btn" data-action="dialog-cancel" aria-label="Close"><svg aria-hidden="true"><use href="#g-close"/></svg></button>
+      </div>
+    </div>
+    <form class="window-body dialog-body" id="shutdown-form">
+      <svg class="icon icon-32" aria-hidden="true"><use href="#i-power"/></svg>
+      <fieldset class="plain">
+        <legend>What do you want the computer to do?</legend>
+        <label class="radio"><input type="radio" name="sd" value="shutdown" checked> <span>Shut down</span></label>
+        <label class="radio"><input type="radio" name="sd" value="restart"> <span>Restart</span></label>
+        <label class="radio"><input type="radio" name="sd" value="home"> <span>Log off and go home</span></label>
+      </fieldset>
+      <div class="dialog-actions">
+        <button type="submit" class="btn btn-default">OK</button>
+        <button type="button" class="btn" data-action="dialog-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="safe-to-turn-off" id="safe-off" hidden tabindex="-1">
+  <p>It's now safe to turn off<br>your computer.</p>
+  <small>(click or press any key to turn it back on)</small>
+</div>

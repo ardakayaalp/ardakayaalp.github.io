@@ -1,0 +1,81 @@
+---
+title: Gallery
+window_title: My Pictures
+permalink: /gallery/
+icon: pictures
+wide: true
+address: C:\My Documents\My Pictures
+description: Photo albums by Arda Kayaalp.
+---
+{%- comment -%}
+  Albums are grouped by their `country:` (alphabetical), newest album first inside a group.
+  "Arrange by: Date" (main.js) moves the same cards into one flat list instead.
+{%- endcomment -%}
+{%- assign groups = site.albums | group_by: "country" | sort: "name" -%}
+<p class="lead">Chasing the light. More on Instagram: <a href="https://www.instagram.com/rdkylphoto">@rdkylphoto</a></p>
+
+{%- if site.albums.size > 0 %}
+<div class="gallery" id="gallery">
+  <div class="toolbar toolbar--inline gallery-toolbar" role="toolbar" aria-label="Arrange albums" hidden>
+    <span class="toolbar-label" id="arrange-label">Arrange by:</span>
+    <div class="toolbar-group" role="group" aria-labelledby="arrange-label">
+      <button type="button" class="tool-btn" data-arrange="country" aria-pressed="true"><svg class="icon icon-16" aria-hidden="true"><use href="#i-globe"/></svg><span>Country</span></button>
+      <button type="button" class="tool-btn" data-arrange="date" aria-pressed="false"><svg class="icon icon-16" aria-hidden="true"><use href="#i-calendar"/></svg><span>Date</span></button>
+    </div>
+    <span class="toolbar-sep" aria-hidden="true"></span>
+    <button type="button" class="tool-btn" data-order="desc" aria-label="Sort order: newest first. Click for oldest first."><svg class="glyph" aria-hidden="true"><use href="#g-down"/></svg><span>Newest first</span></button>
+  </div>
+
+  <div class="album-groups" id="album-groups">
+    {%- for pass in (1..2) %}
+    {%- for group in groups %}
+    {%- comment -%} albums without a country go last, under "Other" {%- endcomment -%}
+    {%- if pass == 1 and group.name == "" %}{% continue %}{% endif %}
+    {%- if pass == 2 and group.name != "" %}{% continue %}{% endif %}
+    {%- assign gname = group.name | default: "Other" -%}
+    {%- assign gid = gname | slugify: "latin" -%}
+    {%- assign gphotos = 0 -%}
+    {%- assign galbums = group.items | sort: "date" | reverse -%}
+    {%- capture cards %}
+      {%- for album in galbums %}
+      {%- include album-scan.html album=album %}
+      {%- assign gphotos = gphotos | plus: album_count %}
+      <li class="album-item" data-from="{{ album_from }}" data-to="{{ album_to }}">
+        <a class="album-card" href="{{ album.url | relative_url }}">
+          <span class="album-cover">
+            {%- if album_cover != "" %}<img src="{{ album_cover | relative_url }}" alt="" loading="lazy" decoding="async">{% endif %}
+          </span>
+          <span class="album-info">
+            <svg class="icon icon-16" aria-hidden="true"><use href="#i-folder"/></svg>
+            <span class="album-title">{{ album.title }}</span>
+          </span>
+          <span class="album-sub">
+            {{- album_count }} photo{% if album_count != 1 %}s{% endif %} · {{ album_period }}
+            {%- if album.location %} · {{ album.location }}{% endif %}
+            {%- if album.country %}{% unless album.location contains album.country %}<span class="album-country"> · {{ album.country }}</span>{% endunless %}{% endif -%}
+          </span>
+        </a>
+      </li>
+      {%- endfor %}
+    {%- endcapture %}
+    <section class="album-group" id="{{ gid }}" aria-labelledby="{{ gid }}-h">
+      <h2 class="album-group-heading" id="{{ gid }}-h">
+        <svg class="icon icon-16" aria-hidden="true"><use href="#i-folder"/></svg>
+        <span>{{ gname }}</span>
+        <span class="album-group-count">{{ galbums.size }} album{% if galbums.size != 1 %}s{% endif %} · {{ gphotos }} photos</span>
+      </h2>
+      <ul class="album-grid">{{ cards }}
+      </ul>
+    </section>
+    {%- endfor %}
+    {%- endfor %}
+  </div>
+
+  <ul class="album-grid album-flat" id="album-flat" hidden aria-label="All albums by date"></ul>
+</div>
+{%- else %}
+<div class="empty-state">
+  <svg class="icon icon-48" aria-hidden="true"><use href="#i-pictures"/></svg>
+  <p>No albums yet. Check back soon!</p>
+</div>
+{%- endif %}

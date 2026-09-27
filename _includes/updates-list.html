@@ -1,0 +1,5 @@
+{%- comment -%}
+  Sets `updates`: every page under updates/ (one folder per update), newest first.
+  Folders are named YYYY-MM-DD-short-name, so sorting by path sorts by date.
+{%- endcomment -%}
+{%- assign updates = site.pages | where: "update", true | sort: "path" | reverse -%}

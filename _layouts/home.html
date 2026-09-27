@@ -1,0 +1,89 @@
+---
+layout: default
+---
+<div class="home-grid">
+
+<section class="window window--about" data-window data-title="About Me" data-icon="userfolder" aria-labelledby="about-heading">
+  {% include titlebar.html title="About Me" icon="userfolder" close="/" %}
+  <div class="window-body">
+    <div class="about">
+      <figure class="about-photo">
+        <img src="{{ site.author.avatar | relative_url }}" width="640" height="640" alt="Portrait of {{ site.author.name }}">
+      </figure>
+      <div class="about-text">
+        <h1 id="about-heading" class="about-name">{{ page.greeting | default: site.author.name }}</h1>
+        <p class="about-role">
+          {{ site.author.role }} · <a href="{{ site.author.employer_url }}">Nuclear Moments Group</a>, {{ site.author.employer }}
+        </p>
+        <div class="prose">
+{{ content }}
+        </div>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <a class="btn" href="{{ '/background/' | relative_url }}"><svg class="icon icon-16" aria-hidden="true"><use href="#i-briefcase"/></svg>Background</a>
+      <a class="btn" href="{{ '/publications/' | relative_url }}"><svg class="icon icon-16" aria-hidden="true"><use href="#i-book"/></svg>Publications</a>
+      <a class="btn" href="{{ '/cv/' | relative_url }}"><svg class="icon icon-16" aria-hidden="true"><use href="#i-document"/></svg>CV</a>
+      <a class="btn" href="mailto:{{ site.author.email }}"><svg class="icon icon-16" aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
+    </div>
+
+    <ul class="social-row" aria-label="Profiles">
+      {%- for s in site.social %}
+      <li><a href="{{ s.url }}" target="_blank" rel="noopener me" title="{{ s.name }}"><svg class="icon icon-16" aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg><span>{{ s.name }}</span></a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+  <div class="status-bar">
+    <p class="status-field">{{ site.author.location }}</p>
+    <p class="status-field status-field--end"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+  </div>
+</section>
+
+<section class="window window--updates" data-window data-title="Latest Updates" data-icon="notepad" aria-labelledby="latest-heading">
+  {% include titlebar.html title="Latest Updates" icon="notepad" close="/updates/" %}
+  <div class="window-body">
+    <h2 id="latest-heading" class="sr-only">Latest updates</h2>
+    {%- include updates-list.html %}
+    {%- if updates.size > 0 %}
+    <ul class="update-mini-list">
+      {%- for u in updates limit: site.home_updates %}
+      {%- include update-info.html page=u %}
+      <li>
+        <a href="{{ u.url | relative_url }}">
+          <span class="date">{{ upd_date }}</span>
+          <span class="title">{{ upd_title }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p class="muted">Nothing here yet.</p>
+    {%- endif %}
+    <p class="more-link"><a class="btn" href="{{ '/updates/' | relative_url }}">All updates<svg aria-hidden="true" class="glyph"><use href="#g-right"/></svg></a></p>
+  </div>
+</section>
+
+<section class="window window--albums" data-window data-title="My Pictures" data-icon="pictures" aria-labelledby="albums-heading">
+  {% include titlebar.html title="My Pictures" icon="pictures" close="/gallery/" %}
+  <div class="window-body">
+    <h2 id="albums-heading" class="sr-only">Recent photo albums</h2>
+    {%- assign albums = site.albums | sort: "date" | reverse -%}
+    {%- if albums.size > 0 %}
+    <ul class="album-mini-grid">
+      {%- for album in albums limit: 3 %}
+      {%- include album-scan.html album=album %}
+      <li><a href="{{ album.url | relative_url }}">
+        <span class="thumb">{% if album_cover != "" %}<img src="{{ album_cover | relative_url }}" alt="" loading="lazy">{% endif %}</span>
+        <span class="label">{{ album.title }}</span>
+      </a></li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p class="muted">Albums coming soon.</p>
+    {%- endif %}
+    <p class="more-link"><a class="btn" href="{{ '/gallery/' | relative_url }}">Open gallery<svg aria-hidden="true" class="glyph"><use href="#g-right"/></svg></a></p>
+  </div>
+</section>
+
+</div>

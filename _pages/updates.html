@@ -1,0 +1,48 @@
+---
+title: Updates
+window_title: Updates - Notepad
+permalink: /updates/
+icon: notepad
+description: Project updates and random thoughts from Arda Kayaalp.
+---
+{%- include updates-list.html -%}
+{%- assign all_tags = "" | split: "" -%}
+{%- for u in updates -%}{%- if u.tags -%}{%- assign all_tags = all_tags | concat: u.tags -%}{%- endif -%}{%- endfor -%}
+{%- assign all_tags = all_tags | uniq | sort_natural -%}
+
+<p class="lead">Notes on my projects, research life and whatever else is on my mind.</p>
+
+<div class="toolbar toolbar--inline" role="toolbar" aria-label="Filter updates">
+  {%- if all_tags.size > 0 %}
+  <span class="toolbar-label" id="filter-label">Filter:</span>
+  <div class="toolbar-group" role="group" aria-labelledby="filter-label">
+    <button type="button" class="tool-btn" data-filter="" aria-pressed="true">All</button>
+    {%- for tag in all_tags %}
+    <button type="button" class="tool-btn" data-filter="{{ tag | escape }}" aria-pressed="false">{{ tag }}</button>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+</div>
+
+{%- if updates.size > 0 %}
+<ol class="update-list" id="update-list">
+  {%- for u in updates %}
+  {%- include update-info.html page=u excerpt=true %}
+  <li class="update-item" data-tags="{{ u.tags | join: '|' | escape }}">
+    <svg class="icon icon-32 update-icon" aria-hidden="true"><use href="#i-notepad"/></svg>
+    <div class="update-body">
+      <h2 class="update-title"><a href="{{ u.url | relative_url }}">{{ upd_title }}</a></h2>
+      <p class="update-meta">
+        {%- if u.published == false %}<span class="tag tag--draft">draft</span> {% endif -%}
+        <time datetime="{{ upd_date }}">{{ upd_date | date: "%-d %b %Y" }}</time>
+        {%- for tag in u.tags %} <a class="tag" href="?tag={{ tag | uri_escape }}" data-tag="{{ tag | escape }}">{{ tag }}</a>{% endfor %}
+      </p>
+      <p class="update-excerpt">{{ upd_excerpt | truncatewords: 40 }}</p>
+    </div>
+  </li>
+  {%- endfor %}
+</ol>
+<p class="muted" id="no-results" hidden>No updates with this tag.</p>
+{%- else %}
+<p class="muted">Nothing here yet. Check back soon!</p>
+{%- endif %}

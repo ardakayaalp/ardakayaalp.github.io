@@ -1,0 +1,34 @@
+---
+layout: null
+permalink: /404.html
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>404 - Page not found · {{ site.title }}</title>
+<link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body class="bsod">
+<main class="bsod-screen">
+  <p class="bsod-title"><span>OS97</span></p>
+  <p>A fatal exception <b>404</b> has occurred at <span class="bsod-path" id="bsod-path">this address</span>.
+     The page you were looking for does not exist, was moved, or was never written.</p>
+  <ul>
+    <li>Press any key or tap the screen to return to the desktop.</li>
+    <li>Or go to <a href="{{ '/' | relative_url }}">the home page</a>, <a href="{{ '/updates/' | relative_url }}">updates</a> or <a href="{{ '/gallery/' | relative_url }}">the gallery</a>.</li>
+  </ul>
+  <p class="bsod-continue">Press any key to continue <span class="blink">_</span></p>
+</main>
+<script>
+  document.getElementById('bsod-path').textContent = location.pathname;
+  function home(e) { if (e && e.target.closest('a')) return; location.href = '{{ "/" | relative_url }}'; }
+  addEventListener('keydown', function (e) { if (!e.metaKey && !e.ctrlKey && !e.altKey && e.key !== 'Tab') home(); });
+  addEventListener('click', home);
+</script>
+</body>
+</html>

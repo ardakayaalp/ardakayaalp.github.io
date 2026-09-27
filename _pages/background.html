@@ -1,0 +1,115 @@
+---
+title: Background
+window_title: Background - Properties
+permalink: /background/
+icon: briefcase
+description: Education, research experience, skills and interests of Arda Kayaalp.
+status: Education & research background
+---
+{%- assign bg = site.data.background -%}
+<nav class="tabs" aria-label="Sections">
+  <a href="#education">Education</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#more">More</a>
+</nav>
+
+<fieldset class="group" id="education">
+  <legend>Education</legend>
+  <ol class="entries">
+    {%- for e in bg.education %}
+    <li class="entry">
+      <div class="entry-head">
+        <h3>{{ e.title }}</h3>
+        <span class="entry-dates">{{ e.dates }}</span>
+      </div>
+      <div class="entry-sub">
+        {% if e.url %}<a href="{{ e.url }}">{{ e.org }}</a>{% else %}{{ e.org }}{% endif %}
+        <span class="entry-place">{{ e.place }}</span>
+      </div>
+      {%- if e.note %}<p class="entry-note">{{ e.note }}</p>{% endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+</fieldset>
+
+<fieldset class="group" id="experience">
+  <legend>Research &amp; Employment</legend>
+  <ol class="entries">
+    {%- for e in bg.experience %}
+    <li class="entry">
+      <div class="entry-head">
+        <h3>{{ e.title }}</h3>
+        <span class="entry-dates">{{ e.dates }}</span>
+      </div>
+      <div class="entry-sub">
+        {% if e.url %}<a href="{{ e.url }}">{{ e.org }}</a>{% else %}{{ e.org }}{% endif %}
+        <span class="entry-place">{{ e.place }}</span>
+      </div>
+      {%- if e.points %}
+      <ul class="entry-points">
+        {%- for p in e.points %}<li>{{ p }}</li>{% endfor %}
+      </ul>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+</fieldset>
+
+<fieldset class="group" id="internships">
+  <legend>Internships</legend>
+  <ol class="entries">
+    {%- for e in bg.internships %}
+    <li class="entry">
+      <div class="entry-head">
+        <h3>{{ e.title }}</h3>
+        <span class="entry-dates">{{ e.dates }}</span>
+      </div>
+      <div class="entry-sub"><span>{{ e.note }}</span><span class="entry-place">{{ e.place }}</span></div>
+    </li>
+    {%- endfor %}
+  </ol>
+</fieldset>
+
+<div class="group-row" id="skills">
+  <fieldset class="group">
+    <legend>Software</legend>
+    <ul class="skills">
+      {%- for s in bg.skills %}
+      <li>
+        <span class="skill-name">{{ s.name }}</span>
+        <span class="progress" role="meter" aria-valuemin="0" aria-valuemax="4" aria-valuenow="{{ s.level }}" aria-label="{{ s.name }} proficiency {{ s.level }} of 4">
+          <span class="progress-fill" style="--level: {{ s.level }}"></span>
+        </span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </fieldset>
+
+  <fieldset class="group">
+    <legend>Awards &amp; Grants</legend>
+    {%- for a in bg.awards %}
+    <p class="award"><strong>{{ a.title }}</strong><br><span class="muted">{{ a.org }}</span><br><span class="entry-dates">{{ a.dates }}</span></p>
+    {%- endfor %}
+    <h3 class="group-subhead">Languages</h3>
+    <ul class="plain-list">
+      {%- for l in bg.languages %}<li>{{ l }}</li>{% endfor %}
+    </ul>
+  </fieldset>
+</div>
+
+<div class="group-row" id="more">
+  <fieldset class="group">
+    <legend>Research Background</legend>
+    <ul class="chips">{% for r in bg.research_background %}<li>{{ r }}</li>{% endfor %}</ul>
+  </fieldset>
+  <fieldset class="group">
+    <legend>Research Interests</legend>
+    <ul class="chips">{% for r in bg.research_interests %}<li>{{ r }}</li>{% endfor %}</ul>
+  </fieldset>
+</div>
+
+<div class="button-row button-row--end">
+  <a class="btn" href="{{ '/files/CV.pdf' | relative_url }}" download><svg class="icon icon-16" aria-hidden="true"><use href="#i-document"/></svg>Download CV (PDF)</a>
+  <a class="btn btn-default" href="{{ '/publications/' | relative_url }}">Publications<svg class="glyph" aria-hidden="true"><use href="#g-right"/></svg></a>
+</div>

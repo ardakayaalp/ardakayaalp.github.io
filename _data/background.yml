@@ -1,0 +1,94 @@
+# Content of the "Background" page. Edit freely; order is preserved.
+
+education:
+  - title: Ph.D. in Physics
+    org: KU Leuven, Arenberg Doctoral School
+    url: https://fys.kuleuven.be/
+    dates: Oct 2024 - present
+    place: Leuven, Belgium
+    note: "Project: Exploring the nuclear structure using laser spectroscopy techniques"
+  - title: M.Sc. in Physics
+    org: Middle East Technical University
+    url: https://phys.metu.edu.tr/
+    dates: Mar 2021 - Aug 2024
+    place: Ankara, Turkey
+    note: "Thesis: Application of the quantal diffusion approach based on the stochastic mean-field theory"
+  - title: B.Sc. in Nuclear Engineering (Honours)
+    org: Hacettepe University
+    url: https://nuke.hacettepe.edu.tr/en
+    dates: Aug 2015 - Jun 2019
+    place: Ankara, Turkey
+    note: "Graduation project: A study of the p-¹¹B fusion reaction using the Geant4 toolkit"
+
+experience:
+  - title: Doctoral Researcher
+    org: Nuclear Moments Group, KU Leuven
+    url: https://fys.kuleuven.be/iks/nm/home
+    dates: Oct 2024 - present
+    place: Leuven, Belgium
+    points:
+      - Nuclear structure studies using precision laser spectroscopy.
+      - Experimental design and optimization of nuclear moment measurements.
+      - Teaching and other educational activities.
+  - title: R&D Engineer
+    org: Oncotech Medical Systems
+    dates: Jul 2022 - May 2023
+    place: Ankara, Turkey
+    points:
+      - Researched and developed algorithms for medical data and image processing.
+      - Prototyped a MATLAB-based DICOM-RT viewer with a GUI.
+      - Built a low-cost optical surface tracking system for SGRT in C++ with OpenCV and CUDA.
+  - title: Scientific Project Specialist
+    org: Research and Application Center for Space and Accelerator Technologies, METU
+    dates: Jan 2020 - Jun 2022
+    place: Ankara, Turkey
+    points:
+      - Magnetic alignment and proton beam parameter calculations.
+      - Led Monte Carlo simulations and radiation dose calculations.
+      - Developed image processing tools for chaotic system analysis; mentored interns.
+  - title: Undergraduate Researcher
+    org: Research and Application Center for Space and Accelerator Technologies, METU
+    dates: Dec 2018 - Jan 2020
+    place: Ankara, Turkey
+    points:
+      - Developed MATLAB image processing software for beam diagnostics.
+      - Assisted in proton beamline calculations and irradiation test design.
+
+internships:
+  - title: Çekmece Nuclear Research and Education Center
+    dates: Jun - Jul 2018
+    place: Istanbul, Turkey
+    note: Reactor physics, radiation protection and radioactive waste management.
+  - title: OMV Samsun Thermal Power Plant
+    dates: Jul - Aug 2017
+    place: Samsun, Turkey
+    note: Thermodynamic aspects of a power plant.
+
+awards:
+  - title: TÜBİTAK Graduate Scholarship
+    org: The Scientific and Technological Research Council of Türkiye
+    dates: Mar 2022 - Aug 2024
+
+research_background:
+  - Multinucleon transfer mechanisms
+  - Radiation detection and measurement
+  - Computational radiation transport
+
+research_interests:
+  - Experimental nuclear physics
+  - Laser spectroscopy & nuclear moments
+  - High-performance computing in nuclear physics
+
+skills:
+  - { name: MATLAB,         level: 4 }
+  - { name: C++,            level: 3 }
+  - { name: Python,         level: 3 }
+  - { name: Linux,          level: 3 }
+  - { name: LaTeX,          level: 3 }
+  - { name: Geant4,         level: 3 }
+  - { name: MCNP & SERPENT, level: 2 }
+  - { name: Fortran,        level: 1 }
+
+languages:
+  - Turkish (native)
+  - English (C1, TOEFL iBT 104)

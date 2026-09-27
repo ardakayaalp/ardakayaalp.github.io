@@ -1,0 +1,53 @@
+---
+title: Publications
+window_title: Publications - Explorer
+permalink: /publications/
+icon: book
+address: C:\My Documents\Publications
+description: Peer-reviewed publications and theses by Arda Kayaalp.
+---
+{%- assign pubs = site.data.publications -%}
+{%- assign me = site.author.name | split: " " | last -%}
+<div class="toolbar toolbar--inline" role="toolbar" aria-label="Profiles">
+  {%- for s in site.social %}{% if s.icon == 'scholar' or s.icon == 'orcid' or s.icon == 'researchgate' %}
+  <a class="tool-btn" href="{{ s.url }}" target="_blank" rel="noopener"><svg class="icon icon-16" aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg><span>{{ s.name }}</span></a>
+  {%- endif %}{% endfor %}
+</div>
+
+{%- assign by_year = pubs | group_by: "year" | sort: "name" | reverse -%}
+{%- for group in by_year %}
+<section class="pub-year" aria-labelledby="y{{ group.name }}">
+  <h2 id="y{{ group.name }}" class="pub-year-heading">{{ group.name }}</h2>
+  <ol class="pub-list">
+    {%- for p in group.items %}
+    <li class="pub">
+      <svg class="icon icon-32 pub-icon" aria-hidden="true"><use href="#i-{% if p.type == 'thesis' %}book{% else %}document{% endif %}"/></svg>
+      <div class="pub-body">
+        <h3 class="pub-title">
+          {%- if p.doi %}<a href="https://doi.org/{{ p.doi }}">{{ p.title }}</a>
+          {%- elsif p.url %}<a href="{{ p.url }}">{{ p.title }}</a>
+          {%- else %}{{ p.title }}{% endif -%}
+        </h3>
+        {%- comment -%} Highlight my own name in the author list {%- endcomment -%}
+        {%- assign authors = p.authors | split: ", " -%}
+        <p class="pub-authors">
+          {%- for a in authors -%}
+            {%- if a contains me -%}<strong>{{ a }}</strong>{%- else -%}{{ a }}{%- endif -%}{%- unless forloop.last %}, {% endunless -%}
+          {%- endfor -%}
+        </p>
+        <p class="pub-venue"><em>{{ p.venue }}</em>{% if p.details %} <span>{{ p.details }}</span>{% endif %} ({{ p.year }})</p>
+        <p class="pub-actions">
+          {%- if p.doi %}<a class="btn btn-small" href="https://doi.org/{{ p.doi }}">DOI</a>{% endif %}
+          {%- if p.url %}<a class="btn btn-small" href="{{ p.url }}">Open</a>{% endif %}
+          {%- if p.pdf %}<a class="btn btn-small" href="{{ p.pdf }}">PDF</a>{% endif %}
+          {%- if p.arxiv %}<a class="btn btn-small" href="https://arxiv.org/abs/{{ p.arxiv }}">arXiv</a>{% endif %}
+          {%- if p.doi %}<span class="pub-doi">doi:{{ p.doi }}</span>{% endif %}
+        </p>
+      </div>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+{%- endfor %}
+
+<p class="muted small">The most up-to-date list is on <a href="{{ site.social[0].url }}">Google Scholar</a>.</p>
